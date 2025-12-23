@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AppRating</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css//w3.css'%}">
+  <link rel="stylesheet" href="{% static 'css/family.css'%}">
+  <link rel="stylesheet" href="{% static 'css/font_awesome.min.css'%}">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="{% static 'css/kri.css'%}">
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      /* background-color:rgba(0, 0, 0, 0.315) */
+      background-image: url("{% static 'images/t.webp'%}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    #nav{
+      animation: nav 10s;
+    }
+    @keyframes nav{
+      0%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f1f1f1;
+      /* Example background color */
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      /* Optional: Add shadow for visual effect */
+      text-align: center;
+      padding: 8px;
+    }
+
+    .mySlides {
+      display: none
+    }
+
+    .w3-justify {
+      background-color: white;
+      color: black;
+    }
+
+    .w3-wide {
+      background-color: black;
+      color: wheat;
+    }
+  </style>
+</head>
+
+<body >
+
+  <!-- Navbar -->
+  <div class="w3-top w3-center w3-animate-opacity">
+    <div class="w3-bar w3-black w3-card w3-center" id="nav">
+      <!-- <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i>POSE DETECTION</a> -->
+      <!-- <img src="{% static 'images/ava.jpeg'%}" class="w3-circle w3-bar-item w3-theme-large"  style="height: 60px; width: 80px;" alt="Avatar"> -->
+      <a href="{% url 'base'%}" class="w3-bar-item w3-button w3-theme-large w3-large w3-hover-red ">Rating of Mobile
+        Apps </a>
+
+      <a href="{% url 'base'%}" class="w3-bar-item w3-button w3-padding-large w3-hover-red">HOME</a>
+      <a href="{% url 'Userlogin' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red">USER</a>
+      <a href="{% url 'AdminLogin' %}"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red ">ADMIN</a>
+      <a href="{% url 'Userregister'%}"
+        class="w3-bar-item w3-button  w3-hover-red w3-padding-large w3-hide-small">REGISTER</a>
+
+    </div>
+  </div>
+
+  <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+    <!-- Automatic Slideshow Images -->
+
+
+    <div class="mySlides w3-display-container w3-center">
+      <img src="{% static 'images/pose1.png'%}" style="width:50%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+
+      </div>
+    </div>
+
+    {% block contents %}
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+      <h2 class="w3-wide w3-animate-opacity w3-round-xxlarge" id="nav">RATING OF MOBILE APP</h2>
+
+      <p class="w3-justify  w3-animate-left w3-opacity-max w3-wide w3-white" id="nav">
+        Ratings of Customers' decisions are greatly influenced by
+        what they read or see online. Reviews by customers demonstrate
+        their knowledge about quality and experience. In the Google
+        Play store, applications' success can be significantly influenced
+        by phoney numerical ratings. It's well knowledge that a positive
+        review may be strongly associated with a high star rating.
+        Nevertheless, the text format of reviews typically differs from
+        the information provided by user star ratings. The effective
+        machine learning approach for forecasting app ratings on the
+        Google Play Store is displayed in this study
+      </p>
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="w3-padding-8 w3-margin-bottom w3-center w3-opacity ">
+
+      <p class="w3-medium w3-red">@ Designed by <a href="#" target="_blank">DATA POINT</a></p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

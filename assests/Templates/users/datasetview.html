@@ -1,0 +1,27 @@
+{% extends 'users/UserHome.html'%}
+{% load static %}
+<style>
+    p {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         margin-left: 20px;
+         margin-right: 20px;
+         background-color: black;
+         animation: para 10s;
+    }
+    @keyframes para{
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+</style>
+{% block contents %}
+<div class="w3-container w3-content w3-center w3-padding-64 w3-animate-opacity-max  w3-round-xxlarge"
+    style="max-width:500px" id="band">
+    <h2 class="w3-wide  w3-text-white w3-round-xxlarge">APP RATING</h2>
+    <div class="container w3-animate-left  w3-right-align " style="margin: auto;">
+      <p>
+        {{data|safe}}
+    </p>
+    </div>
+</div>
+{% endblock %}

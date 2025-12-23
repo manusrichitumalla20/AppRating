@@ -1,0 +1,77 @@
+{% extends 'users/UserHome.html'%}
+{% load static%}
+{% block contents %}
+<style>
+    td {
+        font: bold;
+    }
+
+    #myform {
+       
+        animation: mymove 10s;
+       
+    }
+
+    @keyframes mymove {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+   
+</style>
+
+<div class="w3-container w3-content w3-center w3-padding-64 w3-animate-opacity-max  w3-round-xxlarge"
+    style="max-width:500px" id="band">
+    <h2 class="w3-wide  w3-text-white w3-round-xxlarge" id="myform">APP RATING</h2>
+    <div class="container   w3-right-align " style="margin-left:20%;">
+
+        <h1 id="myform">APP RATTING IS {{prediction}}</h1>
+
+        <form action="{%url 'predict' %}" method="post" enctype="multipart/form-data" id="myform">
+            {% csrf_token %}
+            <table class="w3-table-all">
+                <!-- App', 'Category' , 'Reviews' ,  'Installs' , 'Genres -->
+                <tr>
+                    <td>App</td>
+                    <td><input type="text" name="app" required /></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td><input type="text" name="category" required /></td>
+                </tr>
+                <tr>
+                    <td>Reviews</td>
+                    <td><input type="text" name="reviews" required /></td>
+                </tr>
+
+                <tr>
+                    <td>Installs</td>
+                    <td><input type="text" name="installs" required /></td>
+                </tr>
+
+                <td>Genres</td>
+                <td><input type="text" name="genres" required /></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Predict">
+                        <input type="reset" value="Reset">
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

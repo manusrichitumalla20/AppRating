@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<style>
+    #nav {
+        animation: nav 10s;
+    }
+
+    @keyframes nav {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="container">
+
+
+
+    <div class="w3-container w3-content w3-center w3-padding-64 w3-animate-opacity " style="max-width:500px" id="band">
+        <h2 class="w3-wide w3-animate-opacity w3-round-xxlarge">USER LOGIN</h2>
+
+        <div class="w3-row-padding w3-padding-32 w3-circle">
+            <div class="w3-margin-bottom">
+                <div class="container" id="nav">
+                    <form action="{% url 'Userlogin'%}" method="post" enctype="multipart/form-data" class="w3-center">
+                        {% csrf_token%}
+                        <img src="{% static 'images/ava.jpeg'%}" alt="Jane"
+                            style="width: 150px;; height:130px ; margin-left:4%;" class="w3-animate-zoom w3-circle">
+                        <br>
+                        <br>
+
+                        <input type="text"
+                            class="w3-input w3-white w3-center w3-text-deep-orange w3-wide w3-row-padding "
+                            name='username' placeholder="UserName" required autocomplete="off"> <br>
+                        <input type="password"
+                            class=" w3-input w3-white w3-center w3-text-deep-orange  w3-wide w3-row-padding"
+                            name="password" placeholder="Password" autocomplete="off" required><br><br>
+                        <input type="submit" value="Sigin" class="w3-button w3-animate-button w3-green w3-hover-white">
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="reset" name="" id="" value="Reset"
+                            class="w3-button w3-animate-button w3-red w3-hover-white">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% if messages %}
+        {% for mes in messages%}
+        <h3 class="w3-wide w3-text-deep-orange">{{mes}}</h3>
+        {% endfor %}
+        {% endif %}
+    </div>
+    {% endblock %}

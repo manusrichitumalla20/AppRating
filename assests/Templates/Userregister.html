@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block contents %}
+<style>
+    #nav {
+        animation: nav 10s;
+    }
+
+    @keyframes nav {
+        0% {
+            opacity: 0;
+        }   
+
+        100% {
+            opacity: 1;
+        }
+    }
+    
+</style>
+
+<div class="w3-container w3-content w3-center w3-padding-64 w3-animate-opacity-max  w3-round-xxlarge" style="max-width:500px" id="band">
+    <h2 class="w3-wide  w3-text-white w3-round-xxlarge">USER REGISTER</h2>
+    <div class="container w3-animate-left  w3-right-align " style="margin-left:20%;">
+        <form action="{% url 'Userregister' %}" method="post"  enctype="multipart/form-data" id="nav">
+            {% csrf_token %}
+    <table  class="w3-table-all w3-opacity-min">
+       
+        <tr>
+            <td class="w3-wide w3-white">Name</td>
+            <td>{{form.Name}}</td>
+        </tr>
+        <tr>
+            <td class="w3-wide w3-white">UserName</td>
+            <td>{{form.Username}}</td>
+        </tr>
+        <tr>
+            <td class="w3-wide w3-white">Password</td>
+            <td>{{form.Password}}</td>
+        </tr>
+        <tr>
+            <td class="w3-wide w3-white">Email</td>
+            <td>{{form.Email}}</td>
+        </tr>
+        <tr>
+            <td class="w3-wide w3-white">Phone_No</td>
+            <td>{{form.Phone_No}}</td>
+        </tr>
+        <tr >
+            <td class="w3-wide w3-white" >Locality</td>
+            <td>{{form.Locality}}</td>
+        </tr>
+        <tr>
+            <td class="w3-wide w3-white">State</td>
+            <td>{{form.State}}</td>
+        </tr>
+    <tr>
+        <td class="w3-wide w3-white">Address</td>
+        <td>{{form.Address}}</td>
+    </tr>
+    <tr><td></td>
+    <td></td>{{form.status}}</tr>
+   <tr>
+    <td></td>
+    <td><input type="submit" vlaue="Register">
+    <input type="reset" value="Reset"></td>
+    <tr>
+
+    </tr>
+    </table>
+</form>
+{% if messages %}
+         {% for mes in messages%}
+           <h3 class="w3-wide w3-text-deep-orange">{{mes}}</h3>
+         {% endfor %}
+       {% endif %}
+</div>
+</div>
+{%endblock%}

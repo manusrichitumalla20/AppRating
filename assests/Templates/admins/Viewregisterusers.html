@@ -1,0 +1,45 @@
+{% extends 'admins/AdminHome.html'%}
+{% load static%}
+{% block contents %}
+<div class="container">
+
+<div class="w3-container w3-content w3-center w3-padding-64 w3-animate-opacity">
+    <h2 class="w3-wide w3-animate-opacity w3-round-xxlarge">REGISTERED USERS</h2>
+    <table class="w3-table-all  w3-round-xxlarge w3-opacity-min" >
+        <tr>
+            <th class="w3-center">Name</th>
+            <th class="w3-center">UserName</th>
+            <th class="w3-center">Email</th>
+            <th class="w3-center">Phone_No</th>
+            <th class="w3-center">Locality</th>
+            <th class="w3-center">State</th>
+            <th class="w3-center">Address</th>
+            <th class="w3-center">Status</th>
+            <th class="w3-center">Activate  </th>
+            <th class="w3-center">Delete</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td class="w3-center">{{i.Name}}</td>
+            <td class="w3-center">{{i.Username}}</td>
+            <td class="w3-center">{{i.Email}}</td>
+            <td class="w3-center">{{i.Phone_No}}</td>
+            <td class="w3-center">{{i.Locality}}</td>
+            <td class="w3-center">{{i.State}}</td>
+            <td class="w3-center">{{i.Address}}</td>
+            <td class="w3-center">{{i.status}}</td>
+        
+         
+            {% if i.status == 'waiting' %}
+            <td class="w3-center w3-buttoncw3-cicle w3-hover-green" colspan="8"><a href="/Activateusers/?id={{i.id}}" style="text-decoration: none;">Activate</a></td>
+                {% else %}
+                <td class="w3-center w3-button w3-circle w3-hover-black" colspan="8"><a href="/Deactivateusers/?id={{i.id}}" style="text-decoration: none;">Deactivate</a></td>
+            {% endif %}
+            
+        
+            <td class="w3-center w3-button w3-hover-red w3-circle " colspan="8" ><a  href="/Deleteusers/?id={{i.id}}" style="text-decoration: none;">Delete</a></td>
+        </tr>
+          {% endfor %}
+    </table>
+</div>
+{% endblock %}
